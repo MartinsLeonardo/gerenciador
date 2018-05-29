@@ -8,10 +8,16 @@ import { TurmasService } from './turmas.service';
 })
 export class AppComponent {
   apresentar = false;
+  turmas = null;
 
   novo(){
     this.apresentar = true;
   }
 
-  //turmas = TurmasService.todas();
+  constructor(private turmasService: TurmasService) {
+    this.turmasService.carregarDados(
+      () => this.turmas = this.turmasService.todas()
+    );
+  }
+  
 }

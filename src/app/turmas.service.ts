@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Turma } from './turma.model';
+import {Observable} from 'rxjs/Observable';
+
 
 @Injectable()
 export class TurmasService {
+
+  private turmas = null;
+  private novo_id = 1;
 
   API_URL = 'http://localhost:3000';
 
@@ -13,26 +18,32 @@ export class TurmasService {
     return this.http.get(this.API_URL + '/turmas');
   }
 
-/*  salvar(id: number, nome: string, descricao: string) {
+  carregarDados(callback) {
+    this.http.get('./assets/dados/turmas.json')
+      .subscribe(turmas => this.turmas = turmas)
+      .add(callback);
+  }
+
+  salvar(id: number, nome: string, descricao: string) {
     const turma = {nome: nome, descricao: descricao};
     if (id) {
-      return this.http.patch(this.API_URL + '/turmas/' + id, disciplina);
+      return this.http.patch(this.API_URL + '/turmas/' + id, turma);
     } else {
-      return this.http.post(this.API_URL + '/turmas', disciplina);
+      return this.http.post(this.API_URL + '/turmas', turma);
     }
   }
 
-  excluir(disciplina: number | Turma) {
+  excluir(turma: number | Turma) {
     let id;
-    if (typeof(disciplina) === 'number') {
-      id = disciplina;
+    if (typeof(turma) === 'number') {
+      id = turma;
     } else {
-      id = disciplina.id;
+      id = turma.id;
     }
-    return this.http.delete(this.API_URL + '/disciplinas/' + id);
+    return this.http.delete(this.API_URL + '/turmas/' + id);
   }
 
   encontrar(arg: number) {
-    return this.http.get(this.API_URL + '/disciplinas/' + arg);
-  } */
+    return this.http.get(this.API_URL + '/turmas/' + arg);
+  } 
 }

@@ -1,50 +1,6 @@
-<h1>Gerenciador
-  <button (click)="novo()">
-      Novo
-  </button>
-</h1>
-<hr>
-<h1>Turmas</h1>
-<table style="width:100%">
-  <tr>
-      <th>Id</th>
-      <th>Disciplina</th>
-      <th>Ano</th> 
-      <th>Professor</th>
-      <th>Alunos</th>
-      <th>Opções</th>
-  </tr>
 
-  <tr *ngFor="let turma of turmas">
-      <td>{{turma.id}}</td>
-      <td>{{turma.disciplina.nome}}</td> 
-      <td>{{turma.ano}}</td>
-      <td>{{turma.professor.nome}}</td>
-      <td>{{turma.alunos}}</td>
-      <td> 
-          <button (click)="excluir(turma)">
-              Excluir
-          </button>
-          <button (click)="editar(turma)">
-              Editar
-          </button>
-      </td>
-  </tr>
-</table>
-
-
-
-<div *ngIf="apresentar">
-  <h2>Cadastrar</h2>
-  <!--
-  <form #cadastro="ngForm" (submit)="salvar()">
-      <div>
-          <label for="id">Id</label><br>
-          <input type="number" id="id" name="id" [(ngModel)]="id" required>
-      </div>
-      
-      <button type="submit" [disabled]="!cadastro.valid">Salvar</button>
-      <button type="reset" (click)="cancelar()">Cancelar</button>
-  </form>
--->
-</div>
+  <app-lista-de-turmas  [disciplinas]="disciplinas" 
+  [editando]="editando"
+  (onEditar)="editar($event)" 
+  (onExcluir)="excluir($event)"></app-lista-de-turmas>
+ 
