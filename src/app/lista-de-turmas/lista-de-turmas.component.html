@@ -6,20 +6,20 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let disciplina of disciplinas"
-      [class.table-active]="editando == disciplina">
+  <tr *ngFor="let turma of turmas"
+      [class.table-active]="editando == turma">
     <td>
-      <i *ngIf="editando == disciplina"
+      <i *ngIf="editando == turma"
          class="fa fa-pencil-square"></i>
       {{turma.nome}}
     </td>
     <td>
       <button class="btn btn-sm btn-danger"
-              (click)="excluir(disciplina)">
+              (click)="excluir(turma)">
         <i class="fa fa-trash"></i> Excluir
       </button>
       <button class="btn btn-sm btn-primary"
-              (click)="editar(disciplina)">
+              (click)="editar(turma)">
         <i class="fa fa-pencil-square"></i> Editar
       </button>
     </td>
