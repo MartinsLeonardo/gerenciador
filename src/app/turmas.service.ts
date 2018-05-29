@@ -18,12 +18,6 @@ export class TurmasService {
     return this.http.get(this.API_URL + '/turmas');
   }
 
-  carregarDados(callback) {
-    this.http.get('./assets/dados/turmas.json')
-      .subscribe(turmas => this.turmas = turmas)
-      .add(callback);
-  }
-
   salvar(id: number, nome: string, descricao: string) {
     const turma = {nome: nome, descricao: descricao};
     if (id) {
