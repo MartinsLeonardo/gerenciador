@@ -27,6 +27,4 @@ export class AppComponent {
         this.status_lista = true;
       }, () => this.status_lista = false);
   }
-
-  
 }
